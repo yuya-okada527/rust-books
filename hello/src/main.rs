@@ -19,9 +19,20 @@ fn main() {
     // println!("second: {second}"); // -> 2
 
     // 配列
-    let mut a: [i32; 3] = [0, 1, 2];
-    let b: [i32; 3] = [0; 3];
-    a[1] = b[1];
+    // let mut a: [i32; 3] = [0, 1, 2];
+    // let b: [i32; 3] = [0; 3];
+    // a[1] = b[1];
     // a[2] = b[2];
-    println!("{:?}", &a[1..3]);
+    // println!("{:?}", &a[1..3]);
+
+    // 構造体
+    struct Person {
+        name: String,
+        age: u32,
+    }
+    let p = Person {
+        name: String::from("John"),
+        age: 8,
+    };
+    println!("name: {}, age: {}", &p.name, &p.age);
 }
