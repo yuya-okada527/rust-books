@@ -102,12 +102,19 @@ fn main() {
     // println!("{}", mut_val);
 
     // if
+    // let number = 1;
+    // if 0 < number {
+    //     println!("0 < number");
+    // } else if number > 0 {
+    //     println!("0 > number");
+    // } else {
+    //     println!("0 == number");
+    // }
     let number = 1;
-    if 0 < number {
-        println!("0 < number");
-    } else if number > 0 {
-        println!("0 > number");
+    let result = if 0 <= number {
+        number
     } else {
-        println!("0 == number");
-    }
+        -number
+    };
+    println!("{}", result);
 }
