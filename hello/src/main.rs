@@ -110,11 +110,22 @@ fn main() {
     // } else {
     //     println!("0 == number");
     // }
-    let number = 1;
-    let result = if 0 <= number {
-        number
-    } else {
-        -number
+    // let number = 1;
+    // let result = if 0 <= number {
+    //     number
+    // } else {
+    //     -number
+    // };
+    // println!("{}", result);
+
+    // loop
+    let mut count = 0;
+    let result = loop {
+        println!("count: {}", count);
+        count += 1;
+        if count == 10 {
+            break count;
+        }
     };
     println!("{}", result);
 }
