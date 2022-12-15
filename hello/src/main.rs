@@ -187,7 +187,34 @@ fn main() {
     // println!("result_number: {}", result_number);
 
     // Range
-    for number in 1..=5 {
-        println!("{}", number);
+    // for number in 1..=5 {
+    //     println!("{}", number);
+    // }
+
+    // Iterator
+    struct Iter {
+        current: usize,
+        max: usize,
+    }
+
+    impl Iterator for Iter {
+        type Item = usize;
+
+        fn next(&mut self) -> Option<usize> {
+            self.current += 1;
+            if self.current - 1 < self.max {
+                Some(self.current - 1)
+            } else {
+                None
+            }
+        }
+    }
+
+    let it = Iter {
+        current: 0,
+        max: 10,
+    };
+    for num in it {
+        println!("{}", num);
     }
 }
