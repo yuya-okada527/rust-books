@@ -137,12 +137,23 @@ fn main() {
     // }
 
     // for
-    for count in 0..10 {
-        println!("count: {}", count);
-    }
+    // for count in 0..10 {
+    //     println!("count: {}", count);
+    // }
 
-    let array = [0, 1, 2, 3, 4, 5, 6];
-    for el in &array {
-        println!("el: {}", el);
+    // let array = [0, 1, 2, 3, 4, 5, 6];
+    // for el in &array {
+    //     println!("el: {}", el);
+    // }
+
+    // label
+    'main: loop {
+        println!("main loop start");
+        'sub: loop {
+            println!("sub loop start");
+            break 'main;
+            println!("sub loop end");
+        }
+        println!("main loop end");
     }
 }
