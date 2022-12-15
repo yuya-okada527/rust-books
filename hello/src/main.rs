@@ -1,4 +1,4 @@
-use std::vec;
+// use std::vec;
 
 fn main() {
     // 文字列
@@ -78,11 +78,18 @@ fn main() {
     // println!("next_result: {}", next_result.unwrap_or(-1));
 
     // Vec
-    let v1 = vec![1, 2, 3, 4, 5];
+    // let v1 = vec![1, 2, 3, 4, 5];
     // let v2 = vec![0; 5];
     // println!("v1: {}", v1[0]);
     // println!("v2: {}", v2[2]);
-    for el in &v1 {
-        println!("{}", el);
+    // for el in &v1 {
+    //     println!("{}", el);
+    // }
+
+    // Box
+    fn print(s: Box<[u8]>) {
+        println!("{:?}", s);
     }
+    let byte_array = [b'h', b'e', b'l', b'l', b'o'];
+    print(Box::new(byte_array));
 }
