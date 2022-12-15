@@ -187,7 +187,7 @@ fn main() {
     // println!("result_number: {}", result_number);
 
     // Range
-    for number in 1..5 {
+    for number in 1..=5 {
         println!("{}", number);
     }
 }
