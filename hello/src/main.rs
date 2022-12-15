@@ -53,7 +53,7 @@ fn main() {
     // }
 
     // Result
-    let result: Result<i32, String> = Ok(200);
+    // let result: Result<i32, String> = Ok(200);
     // match result {
     //     Ok(code) => println!("code: {}", code),
     //     Err(err) => println!("Err: {}", err),
@@ -61,7 +61,18 @@ fn main() {
     // if let Ok(code) = result {
     //     println!("code: {}", code);
     // }
-    println!("code: {}", result.unwrap_or(-1));
+    // println!("code: {}", result.unwrap_or(-1));
+    // let result: Result<i32, String> = Err("error".to_string());
+    // println!("code: {}", result.unwrap_or(-1));
+    fn func(code: i32) -> Result<i32, String> {
+        println!("code: {}", code);
+        Ok(100)
+    }
+
+    let result: Result<i32, String> = Ok(200);
+    let next_result = result.and_then(func);
+    println!("next_result: {}", next_result.unwrap_or(-1));
     let result: Result<i32, String> = Err("error".to_string());
-    println!("code: {}", result.unwrap_or(-1));
+    let next_result = result.and_then(func);
+    println!("next_result: {}", next_result.unwrap_or(-1));
 }
