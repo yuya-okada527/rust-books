@@ -176,13 +176,18 @@ fn main() {
     //     Color::Blue => println!("blue"),
     //     Color::Green => println!("green"),
     // }
-    let result: Result<i32, String> = Ok(100);
-    let result_number = match result {
-        Ok(number) => number,
-        Err(message) => {
-            println!("Error: {}", message);
-            -1
-        }
-    };
-    println!("result_number: {}", result_number);
+    // let result: Result<i32, String> = Ok(100);
+    // let result_number = match result {
+    //     Ok(number) => number,
+    //     Err(message) => {
+    //         println!("Error: {}", message);
+    //         -1
+    //     }
+    // };
+    // println!("result_number: {}", result_number);
+
+    // Range
+    for number in 1..5 {
+        println!("{}", number);
+    }
 }
