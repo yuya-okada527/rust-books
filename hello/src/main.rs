@@ -130,9 +130,19 @@ fn main() {
     // println!("{}", result);
 
     // while
-    let mut count = 0;
-    while count < 10 {
+    // let mut count = 0;
+    // while count < 10 {
+    //     println!("count: {}", count);
+    //     count += 1
+    // }
+
+    // for
+    for count in 0..10 {
         println!("count: {}", count);
-        count += 1
+    }
+
+    let array = [0, 1, 2, 3, 4, 5, 6];
+    for el in &array {
+        println!("el: {}", el);
     }
 }
