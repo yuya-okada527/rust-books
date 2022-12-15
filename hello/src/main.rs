@@ -87,9 +87,15 @@ fn main() {
     // }
 
     // Box
-    fn print(s: Box<[u8]>) {
-        println!("{:?}", s);
-    }
-    let byte_array = [b'h', b'e', b'l', b'l', b'o'];
-    print(Box::new(byte_array));
+    // fn print(s: Box<[u8]>) {
+    //     println!("{:?}", s);
+    // }
+    // let byte_array = [b'h', b'e', b'l', b'l', b'o'];
+    // print(Box::new(byte_array));
+
+    // let & mut
+    let immut_val = 10;
+    let mut mut_val = 20;
+    mut_val += immut_val;
+    println!("{}", mut_val);
 }
