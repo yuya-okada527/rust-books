@@ -45,4 +45,9 @@ fn main() {
 
     // let e1 = Event::Quit;
     // let e2 = Event::MouseDown { x: 10, y: 10 };
+    // Option
+    // pub enum Option<T> {
+    //     None,
+    //     Some(T),
+    // }
 }
