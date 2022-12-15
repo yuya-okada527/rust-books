@@ -45,9 +45,21 @@ fn main() {
 
     // let e1 = Event::Quit;
     // let e2 = Event::MouseDown { x: 10, y: 10 };
+
     // Option
     // pub enum Option<T> {
     //     None,
     //     Some(T),
     // }
+
+    // Result
+    let result: Result<i32, String> = Ok(200);
+
+    // match result {
+    //     Ok(code) => println!("code: {}", code),
+    //     Err(err) => println!("Err: {}", err),
+    // };
+    if let Ok(code) = result {
+        println!("code: {}", code);
+    }
 }
