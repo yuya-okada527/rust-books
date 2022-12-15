@@ -158,11 +158,22 @@ fn main() {
     // }
 
     // match
-    let i: i32 = 1;
-    match i {
-        1 => println!("1"),
-        2 => println!("2"),
-        3 => println!("3"),
-        _ => println!("misc"),
+    // let i: i32 = 1;
+    // match i {
+    //     1 => println!("1"),
+    //     2 => println!("2"),
+    //     3 => println!("3"),
+    //     _ => println!("misc"),
+    // }
+    enum Color {
+        Red,
+        Blue,
+        Green,
+    }
+    let c = Color::Red;
+    match c {
+        Color::Red => println!("red"),
+        Color::Blue => println!("blue"),
+        Color::Green => println!("green"),
     }
 }
