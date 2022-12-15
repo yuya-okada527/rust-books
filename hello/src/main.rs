@@ -1,5 +1,7 @@
 // use std::vec;
 
+// use std::num;
+
 fn main() {
     // 文字列
     // let s1: String = String::from("Hello, World!");
@@ -94,8 +96,18 @@ fn main() {
     // print(Box::new(byte_array));
 
     // let & mut
-    let immut_val = 10;
-    let mut mut_val = 20;
-    mut_val += immut_val;
-    println!("{}", mut_val);
+    // let immut_val = 10;
+    // let mut mut_val = 20;
+    // mut_val += immut_val;
+    // println!("{}", mut_val);
+
+    // if
+    let number = 1;
+    if 0 < number {
+        println!("0 < number");
+    } else if number > 0 {
+        println!("0 > number");
+    } else {
+        println!("0 == number");
+    }
 }
