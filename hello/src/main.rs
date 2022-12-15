@@ -165,15 +165,24 @@ fn main() {
     //     3 => println!("3"),
     //     _ => println!("misc"),
     // }
-    enum Color {
-        Red,
-        Blue,
-        Green,
-    }
-    let c = Color::Red;
-    match c {
-        Color::Red => println!("red"),
-        Color::Blue => println!("blue"),
-        Color::Green => println!("green"),
-    }
+    // enum Color {
+    //     Red,
+    //     Blue,
+    //     Green,
+    // }
+    // let c = Color::Red;
+    // match c {
+    //     Color::Red => println!("red"),
+    //     Color::Blue => println!("blue"),
+    //     Color::Green => println!("green"),
+    // }
+    let result: Result<i32, String> = Ok(100);
+    let result_number = match result {
+        Ok(number) => number,
+        Err(message) => {
+            println!("Error: {}", message);
+            -1
+        }
+    };
+    println!("result_number: {}", result_number);
 }
