@@ -1,3 +1,5 @@
+use std::vec;
+
 fn main() {
     // 文字列
     // let s1: String = String::from("Hello, World!");
@@ -64,15 +66,23 @@ fn main() {
     // println!("code: {}", result.unwrap_or(-1));
     // let result: Result<i32, String> = Err("error".to_string());
     // println!("code: {}", result.unwrap_or(-1));
-    fn func(code: i32) -> Result<i32, String> {
-        println!("code: {}", code);
-        Ok(100)
-    }
+    // fn func(code: i32) -> Result<i32, String> {
+    //     println!("code: {}", code);
+    //     Ok(100)
+    // }
+    // let result: Result<i32, String> = Ok(200);
+    // let next_result = result.and_then(func);
+    // println!("next_result: {}", next_result.unwrap_or(-1));
+    // let result: Result<i32, String> = Err("error".to_string());
+    // let next_result = result.and_then(func);
+    // println!("next_result: {}", next_result.unwrap_or(-1));
 
-    let result: Result<i32, String> = Ok(200);
-    let next_result = result.and_then(func);
-    println!("next_result: {}", next_result.unwrap_or(-1));
-    let result: Result<i32, String> = Err("error".to_string());
-    let next_result = result.and_then(func);
-    println!("next_result: {}", next_result.unwrap_or(-1));
+    // Vec
+    let v1 = vec![1, 2, 3, 4, 5];
+    // let v2 = vec![0; 5];
+    // println!("v1: {}", v1[0]);
+    // println!("v2: {}", v2[2]);
+    for el in &v1 {
+        println!("{}", el);
+    }
 }
