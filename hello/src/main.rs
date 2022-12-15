@@ -119,13 +119,20 @@ fn main() {
     // println!("{}", result);
 
     // loop
+    // let mut count = 0;
+    // let result = loop {
+    //     println!("count: {}", count);
+    //     count += 1;
+    //     if count == 10 {
+    //         break count;
+    //     }
+    // };
+    // println!("{}", result);
+
+    // while
     let mut count = 0;
-    let result = loop {
+    while count < 10 {
         println!("count: {}", count);
-        count += 1;
-        if count == 10 {
-            break count;
-        }
-    };
-    println!("{}", result);
+        count += 1
+    }
 }
