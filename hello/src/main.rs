@@ -227,11 +227,34 @@ fn main() {
     // println!("x = {}", x);
 
     // fn return
-    fn abs(number: i32) -> i32 {
-        if number < 0 {
-            return -number;
-        }
-        number
+    // fn abs(number: i32) -> i32 {
+    //     if number < 0 {
+    //         return -number;
+    //     }
+    //     number
+    // }
+    // println!("{}", abs(-32));
+
+    // impl
+    struct Person {
+        name: String,
+        age: u32,
     }
-    println!("{}", abs(-32));
+
+    impl Person {
+        fn say_name(&self) {
+            println!("I am {}.", self.name);
+        }
+
+        fn say_age(&self) {
+            println!("I am {} year(s) old.", self.age);
+        }
+    }
+
+    let p = Person{
+        name: String::from("Taro"),
+        age: 20,
+    };
+    p.say_name();
+    p.say_age();
 }
