@@ -219,10 +219,19 @@ fn main() {
     // }
 
     // fn
-    fn add(a: i32, b:i32) -> i32 {
-        a + b
-    }
+    // fn add(a: i32, b:i32) -> i32 {
+    //     a + b
+    // }
 
-    let x = add(1, 2);
-    println!("x = {}", x);
+    // let x = add(1, 2);
+    // println!("x = {}", x);
+
+    // fn return
+    fn abs(number: i32) -> i32 {
+        if number < 0 {
+            return -number;
+        }
+        number
+    }
+    println!("{}", abs(-32));
 }
