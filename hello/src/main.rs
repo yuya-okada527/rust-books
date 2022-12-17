@@ -253,7 +253,7 @@ fn main() {
         }
     }
 
-    let p = Person{
+    let p = Person {
         name: String::from("Taro"),
         age: 20,
     };
