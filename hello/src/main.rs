@@ -253,9 +253,19 @@ fn main() {
         }
     }
 
-    let p = Person {
-        name: String::from("Taro"),
-        age: 20,
-    };
+    // let p = Person {
+    //     name: String::from("Taro"),
+    //     age: 20,
+    // };
+    // p.say_name().say_age();
+    impl Person {
+        fn new(name: &str, age: u32) -> Person {
+            Person {
+                name: String::from(name),
+                age: age,
+            }
+        }
+    }
+    let p = Person::new("Taro", 20);
     p.say_name().say_age();
 }
