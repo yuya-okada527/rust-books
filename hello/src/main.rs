@@ -287,5 +287,11 @@ fn main() {
     // dbg!(w);
 
     // panic
-    panic!("it will panic");
+    // panic!("it will panic");
+
+    println!("defined in file: {}", file!());
+    println!("defined on line: {}", line!());
+    let unix = true;
+    println!("is test: {}", cfg!(unix));
+    println!("CARGO_HOME: {}", env!("CARGO_HOME"));
 }
