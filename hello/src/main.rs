@@ -399,10 +399,17 @@ fn main() {
     // println!("{} {} {}", b.r, b.g, b.b);
 
     // borrowing
-    fn calc_data(data: &String) {
-        println!("{}", data);
-    }
-    let important_data = "Hello, World!".to_string();
-    calc_data(&important_data);
-    println!("next: {}", important_data);
+    // fn calc_data(data: &String) {
+    //     println!("{}", data);
+    // }
+    // let important_data = "Hello, World!".to_string();
+    // calc_data(&important_data);
+    // println!("next: {}", important_data);
+
+    let x = 5;
+    let y = &x;
+    let z = &x;
+    dbg!(x);
+    dbg!(y);
+    dbg!(z);
 }
