@@ -2,6 +2,7 @@
 // use std::num;
 // use std::io::Write;
 // use std::fmt::format;
+use std::thread;
 
 fn main() {
     // 文字列
@@ -424,14 +425,20 @@ fn main() {
     // dbg!(y);
 
     // RAII
-    struct Droppable;
-    impl Drop for Droppable {
-        fn drop(&mut self) {
-            println!("Resource will be released!");
-        }
-    }
-    {
-        let d = Droppable;
-    }
-    println!("The Droppable should be released at the end of block.");
+    // struct Droppable;
+    // impl Drop for Droppable {
+    //     fn drop(&mut self) {
+    //         println!("Resource will be released!");
+    //     }
+    // }
+    // {
+    //     let d = Droppable;
+    // }
+    // println!("The Droppable should be released at the end of block.");
+
+    // thread
+    let handle = thread::spawn(|| {
+        println!("Hello, world!");
+    });
+    dbg!(handle.join());
 }
