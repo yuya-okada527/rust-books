@@ -340,37 +340,50 @@ fn main() {
     // println!("{}", p.get_happy());
 
     // trait
-    trait Tweet {
-        fn tweet(&self);
-        fn tweet_twice(&self) {
-            self.tweet();
-            self.tweet();
-        }
-        fn shout(&self) {
-            println!("Uoooooooooooohh");
-        }
-    }
-    struct Dove;
-    struct Duck;
+    // trait Tweet {
+    //     fn tweet(&self);
+    //     fn tweet_twice(&self) {
+    //         self.tweet();
+    //         self.tweet();
+    //     }
+    //     fn shout(&self) {
+    //         println!("Uoooooooooooohh");
+    //     }
+    // }
+    // struct Dove;
+    // struct Duck;
 
-    impl Tweet for Dove {
-        fn tweet(&self) {
-            println!("Coo!");
-        }
-    }
-    impl Tweet for Duck {
-        fn tweet(&self) {
-            println!("Quack!");
-        }
-    }
-    let dove = Dove {};
-    dove.tweet();
-    dove.tweet_twice();
-    dove.shout();
+    // impl Tweet for Dove {
+    //     fn tweet(&self) {
+    //         println!("Coo!");
+    //     }
+    // }
+    // impl Tweet for Duck {
+    //     fn tweet(&self) {
+    //         println!("Quack!");
+    //     }
+    // }
+    // let dove = Dove {};
+    // dove.tweet();
+    // dove.tweet_twice();
+    // dove.shout();
 
-    let duck = Duck {};
-    let bird_vec: Vec<Box<dyn Tweet>> = vec![Box::new(dove), Box::new(duck)];
-    for bird in bird_vec {
-        bird.tweet();
+    // let duck = Duck {};
+    // let bird_vec: Vec<Box<dyn Tweet>> = vec![Box::new(dove), Box::new(duck)];
+    // for bird in bird_vec {
+    //     bird.tweet();
+    // }
+
+    // generics
+    fn make_tuple<T, S>(t: T, s: S) -> (T, S) {
+        (t, s)
     }
+    let t1 = make_tuple(1, 1);
+    dbg!(t1);
+    let t2 = make_tuple("Hello", "world");
+    dbg!(t2);
+    let t3 = make_tuple(vec![1, 2, 3], vec![4, 5, 6]);
+    dbg!(t3);
+    let t4 = make_tuple(3, "years old");
+    dbg!(t4);
 }
