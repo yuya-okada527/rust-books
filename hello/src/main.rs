@@ -1,6 +1,6 @@
 // use std::vec;
-
 // use std::num;
+use std::io::Write;
 
 fn main() {
     // 文字列
@@ -270,10 +270,19 @@ fn main() {
     // p.say_name().say_age();
 
     // macro
-    let s = concat!("A", "b2", 3);
-    println!("{}", s);
-    let s = format!("{}-{:?}", s, ("D", 5));
-    println!("{}", s);
-    let s = format!("{}-{}", "abc", "def");
-    println!("{}", s);
+    // let s = concat!("A", "b2", 3);
+    // println!("{}", s);
+    // let s = format!("{}-{:?}", s, ("D", 5));
+    // println!("{}", s);
+    // let s = format!("{}-{}", "abc", "def");
+    // println!("{}", s);
+    print!("hello{}", "\n");
+    println!("hello: {}", "world");
+    eprint!("hello{}", "\n");
+    eprintln!("hello {}", "world");
+
+    let mut w = Vec::new();
+    write!(&mut w, "{}", "ABC");
+    writeln!(&mut w, "is 123");
+    dbg!(w);
 }
