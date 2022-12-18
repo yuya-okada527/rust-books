@@ -289,9 +289,17 @@ fn main() {
     // panic
     // panic!("it will panic");
 
-    println!("defined in file: {}", file!());
-    println!("defined on line: {}", line!());
-    let unix = true;
-    println!("is test: {}", cfg!(unix));
-    println!("CARGO_HOME: {}", env!("CARGO_HOME"));
+    // println!("defined in file: {}", file!());
+    // println!("defined on line: {}", line!());
+    // let unix = true;
+    // println!("is test: {}", cfg!(unix));
+    // println!("CARGO_HOME: {}", env!("CARGO_HOME"));
+
+    // assert
+    assert!(true);
+    assert_eq!(1, 1);
+    assert_ne!(1, 0);
+    debug_assert!(true);
+    debug_assert_eq!(1, 2);
+    debug_assert_ne!(1, 0);
 }
