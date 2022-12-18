@@ -274,4 +274,6 @@ fn main() {
     println!("{}", s);
     let s = format!("{}-{:?}", s, ("D", 5));
     println!("{}", s);
+    let s = format!("{}-{}", "abc", "def");
+    println!("{}", s);
 }
