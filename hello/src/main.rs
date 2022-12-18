@@ -272,4 +272,6 @@ fn main() {
     // macro
     let s = concat!("A", "b2", 3);
     println!("{}", s);
+    let s = format!("{}-{:?}", s, ("D", 5));
+    println!("{}", s);
 }
