@@ -437,8 +437,17 @@ fn main() {
     // println!("The Droppable should be released at the end of block.");
 
     // thread
-    let handle = thread::spawn(|| {
-        println!("Hello, world!");
-    });
-    dbg!(handle.join());
+    // let handle = thread::spawn(|| {
+    //     println!("Hello, world!");
+    // });
+    // dbg!(handle.join());
+    let mut handles = Vec::new();
+    for x in 0..10 {
+        handles.push(thread::spawn(move || {
+            println!("Hello, world!: {}", x);
+        }));
+    }
+    for handle in handles {
+        let _ = handle.join();
+    }
 }
