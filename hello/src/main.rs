@@ -375,15 +375,34 @@ fn main() {
     // }
 
     // generics
-    fn make_tuple<T, S>(t: T, s: S) -> (T, S) {
-        (t, s)
+    // fn make_tuple<T, S>(t: T, s: S) -> (T, S) {
+    //     (t, s)
+    // }
+    // let t1 = make_tuple(1, 1);
+    // dbg!(t1);
+    // let t2 = make_tuple("Hello", "world");
+    // dbg!(t2);
+    // let t3 = make_tuple(vec![1, 2, 3], vec![4, 5, 6]);
+    // dbg!(t3);
+    // let t4 = make_tuple(3, "years old");
+    // dbg!(t4);
+
+    // ownership
+    // struct Color {
+    //     r: i32,
+    //     g: i32,
+    //     b: i32,
+    // }
+
+    // let a = Color {r: 255, g: 255, b: 255};
+    // let b = a;
+    // println!("{} {} {}", b.r, b.g, b.b);
+
+    // borrowing
+    fn calc_data(data: &String) {
+        println!("{}", data);
     }
-    let t1 = make_tuple(1, 1);
-    dbg!(t1);
-    let t2 = make_tuple("Hello", "world");
-    dbg!(t2);
-    let t3 = make_tuple(vec![1, 2, 3], vec![4, 5, 6]);
-    dbg!(t3);
-    let t4 = make_tuple(3, "years old");
-    dbg!(t4);
+    let important_data = "Hello, World!".to_string();
+    calc_data(&important_data);
+    println!("next: {}", important_data);
 }
