@@ -406,10 +406,20 @@ fn main() {
     // calc_data(&important_data);
     // println!("next: {}", important_data);
 
-    let x = 5;
-    let y = &x;
-    let z = &x;
-    dbg!(x);
-    dbg!(y);
-    dbg!(z);
+    // let x = 5;
+    // let y = &x;
+    // let z = &x;
+    // dbg!(x);
+    // dbg!(y);
+    // dbg!(z);
+
+    // lifetime
+    let y;
+    {
+        let x = 5;
+        y = &x;
+        dbg!(x);
+        dbg!(y);
+    }
+    // dbg!(y);
 }
