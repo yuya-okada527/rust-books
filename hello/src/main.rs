@@ -1,8 +1,7 @@
 // use std::vec;
 // use std::num;
 // use std::io::Write;
-
-use std::fmt::format;
+// use std::fmt::format;
 
 fn main() {
     // 文字列
@@ -306,37 +305,72 @@ fn main() {
     // debug_assert_ne!(1, 0);
 
     // inimplemented
-    enum Emotion {
-        Anger,
-        Happy,
-    }
+    // enum Emotion {
+    //     Anger,
+    //     Happy,
+    // }
 
-    trait Emotional {
-        fn get_happy(&mut self) -> String;
-        fn get_anger(&mut self) -> String;
-        fn tell_state(&self) -> String;
-    }
+    // trait Emotional {
+    //     fn get_happy(&mut self) -> String;
+    //     fn get_anger(&mut self) -> String;
+    //     fn tell_state(&self) -> String;
+    // }
 
-    struct HappyPerson {
-        name: String,
-        state: Emotion,
-    }
+    // struct HappyPerson {
+    //     name: String,
+    //     state: Emotion,
+    // }
 
-    impl Emotional for HappyPerson {
-        fn get_anger(&mut self) -> String {
-            unimplemented!()
+    // impl Emotional for HappyPerson {
+    //     fn get_anger(&mut self) -> String {
+    //         unimplemented!()
+    //     }
+    //     fn get_happy(&mut self) -> String {
+    //         format!("{} is always happy.", self.name)
+    //     }
+    //     fn tell_state(&self) -> String {
+    //         todo!()
+    //     }
+    // }
+
+    // let mut p = HappyPerson {
+    //     name: "Takashi".to_string(),
+    //     state: Emotion::Happy
+    // };
+    // println!("{}", p.get_happy());
+
+    // trait
+    trait Tweet {
+        fn tweet(&self);
+        fn tweet_twice(&self) {
+            self.tweet();
+            self.tweet();
         }
-        fn get_happy(&mut self) -> String {
-            format!("{} is always happy.", self.name)
-        }
-        fn tell_state(&self) -> String {
-            todo!()
+        fn shout(&self) {
+            println!("Uoooooooooooohh");
         }
     }
+    struct Dove;
+    struct Duck;
 
-    let mut p = HappyPerson {
-        name: "Takashi".to_string(),
-        state: Emotion::Happy
-    };
-    println!("{}", p.get_happy());
+    impl Tweet for Dove {
+        fn tweet(&self) {
+            println!("Coo!");
+        }
+    }
+    impl Tweet for Duck {
+        fn tweet(&self) {
+            println!("Quack!");
+        }
+    }
+    let dove = Dove {};
+    dove.tweet();
+    dove.tweet_twice();
+    dove.shout();
+
+    let duck = Duck {};
+    let bird_vec: Vec<Box<dyn Tweet>> = vec![Box::new(dove), Box::new(duck)];
+    for bird in bird_vec {
+        bird.tweet();
+    }
 }
