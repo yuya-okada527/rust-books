@@ -414,12 +414,24 @@ fn main() {
     // dbg!(z);
 
     // lifetime
-    let y;
-    {
-        let x = 5;
-        y = &x;
-        dbg!(x);
-        dbg!(y);
-    }
+    // let y;
+    // {
+    //     let x = 5;
+    //     y = &x;
+    //     dbg!(x);
+    //     dbg!(y);
+    // }
     // dbg!(y);
+
+    // RAII
+    struct Droppable;
+    impl Drop for Droppable {
+        fn drop(&mut self) {
+            println!("Resource will be released!");
+        }
+    }
+    {
+        let d = Droppable;
+    }
+    println!("The Droppable should be released at the end of block.");
 }
