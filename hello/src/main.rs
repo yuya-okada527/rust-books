@@ -2,6 +2,8 @@
 // use std::num;
 // use std::io::Write;
 
+use std::fmt::format;
+
 fn main() {
     // 文字列
     // let s1: String = String::from("Hello, World!");
@@ -296,10 +298,45 @@ fn main() {
     // println!("CARGO_HOME: {}", env!("CARGO_HOME"));
 
     // assert
-    assert!(true);
-    assert_eq!(1, 1);
-    assert_ne!(1, 0);
-    debug_assert!(true);
-    debug_assert_eq!(1, 2);
-    debug_assert_ne!(1, 0);
+    // assert!(true);
+    // assert_eq!(1, 1);
+    // assert_ne!(1, 0);
+    // debug_assert!(true);
+    // debug_assert_eq!(1, 2);
+    // debug_assert_ne!(1, 0);
+
+    // inimplemented
+    enum Emotion {
+        Anger,
+        Happy,
+    }
+
+    trait Emotional {
+        fn get_happy(&mut self) -> String;
+        fn get_anger(&mut self) -> String;
+        fn tell_state(&self) -> String;
+    }
+
+    struct HappyPerson {
+        name: String,
+        state: Emotion,
+    }
+
+    impl Emotional for HappyPerson {
+        fn get_anger(&mut self) -> String {
+            unimplemented!()
+        }
+        fn get_happy(&mut self) -> String {
+            format!("{} is always happy.", self.name)
+        }
+        fn tell_state(&self) -> String {
+            todo!()
+        }
+    }
+
+    let mut p = HappyPerson {
+        name: "Takashi".to_string(),
+        state: Emotion::Happy
+    };
+    println!("{}", p.get_happy());
 }
