@@ -3,7 +3,8 @@
 // use std::io::Write;
 // use std::fmt::format;
 use std::thread;
-use std::sync::{Arc, Mutex};
+// use std::sync::{Arc, Mutex};
+use std::sync::mpsc;
 
 fn main() {
     // 文字列
@@ -453,17 +454,26 @@ fn main() {
     // }
 
     // common memory
-    let mut handles = Vec::new();
-    let data = Arc::new(Mutex::new(vec![1; 10]));
-    for x in 0..10 {
-        let data_ref = data.clone();
-        handles.push(thread::spawn(move || {
-            let mut data = data_ref.lock().unwrap();
-            data[x] += 1;
-        }))
-    }
-    for handle in handles {
-        let _ = handle.join();
-    }
-    dbg!(data);
+    // let mut handles = Vec::new();
+    // let data = Arc::new(Mutex::new(vec![1; 10]));
+    // for x in 0..10 {
+    //     let data_ref = data.clone();
+    //     handles.push(thread::spawn(move || {
+    //         let mut data = data_ref.lock().unwrap();
+    //         data[x] += 1;
+    //     }))
+    // }
+    // for handle in handles {
+    //     let _ = handle.join();
+    // }
+    // dbg!(data);
+
+    // messing passing
+    let (tx, rx) = mpsc::channel();
+    let handle = thread::spawn(move || {
+        let data = rx.recv().unwrap();
+        println!("{}", data);
+    });
+    let _ = tx.send("Hello, world!");
+    let _ = handle.join();
 }
