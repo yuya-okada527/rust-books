@@ -2,9 +2,14 @@
 // use std::num;
 // use std::io::Write;
 // use std::fmt::format;
-use std::thread;
+// use std::thread;
 // use std::sync::{Arc, Mutex};
-use std::sync::mpsc;
+// use std::sync::mpsc;
+use futures::{executor, future::join_all};
+use std::future::Future;
+use std::pin::Pin;
+use std::task::{Context, Poll};
+
 
 fn main() {
     // 文字列
@@ -476,34 +481,58 @@ fn main() {
     // });
     // let _ = tx.send("Hello, world!");
     // let _ = handle.join();
-    let mut handles = Vec::new();
-    let mut data = vec![1; 10];
-    let mut snd_channels = Vec::new();
-    let mut rcv_channels = Vec::new();
+    // let mut handles = Vec::new();
+    // let mut data = vec![1; 10];
+    // let mut snd_channels = Vec::new();
+    // let mut rcv_channels = Vec::new();
 
-    for _ in 0..10 {
-        let (snd_tx, snd_rx) = mpsc::channel();
-        let (rcv_tx, rcv_rx) = mpsc::channel();
-        snd_channels.push(snd_tx);
-        rcv_channels.push(rcv_rx);
+    // for _ in 0..10 {
+    //     let (snd_tx, snd_rx) = mpsc::channel();
+    //     let (rcv_tx, rcv_rx) = mpsc::channel();
+    //     snd_channels.push(snd_tx);
+    //     rcv_channels.push(rcv_rx);
 
-        handles.push(thread::spawn(move || {
-            let mut data = snd_rx.recv().unwrap();
-            data += 1;
-            let _ = rcv_tx.send(data);
-        }));
+    //     handles.push(thread::spawn(move || {
+    //         let mut data = snd_rx.recv().unwrap();
+    //         data += 1;
+    //         let _ = rcv_tx.send(data);
+    //     }));
+    // }
+
+    // for x in 0..10 {
+    //     let _ = snd_channels[x].send(data[x]);
+    // }
+
+    // for x in 0..10 {
+    //     data[x] = rcv_channels[x].recv().unwrap();
+    // }
+
+    // for handle in handles {
+    //     let _ = handle.join();
+    // }
+    // dbg!(data);
+
+    // Future
+    struct CountDown(u32);
+
+    impl Future for CountDown {
+        type Output = String;
+        fn poll(mut self: Pin<&mut Self>, cx: &mut Context) -> Poll<String> {
+            if self.0 == 0 {
+                Poll::Ready("Zero!!!".to_string())
+            } else {
+                println!("{}", self.0);
+                self.0 -= 1;
+                cx.waker().wake_by_ref();
+                Poll::Pending
+            }
+        }
     }
-
-    for x in 0..10 {
-        let _ = snd_channels[x].send(data[x]);
+    let countdown_future1 = CountDown(10);
+    let countdown_future2 = CountDown(20);
+    let cd_set = join_all(vec![countdown_future1, countdown_future2]);
+    let res = executor::block_on(cd_set);
+    for (i, s) in res.iter().enumerate() {
+        println!("{}: {}", i, s);
     }
-
-    for x in 0..10 {
-        data[x] = rcv_channels[x].recv().unwrap();
-    }
-
-    for handle in handles {
-        let _ = handle.join();
-    }
-    dbg!(data);
 }
