@@ -9,7 +9,19 @@
 // use std::future::Future;
 // use std::pin::Pin;
 // use std::task::{Context, Poll};
-use futures::executor;
+// use futures::executor;
+
+mod module_a {
+    pub fn calc() {
+        println!("module a!");
+    }
+}
+
+mod module_b {
+    pub fn calc() {
+        println!("module b!");
+    }
+}
 
 fn main() {
     // 文字列
@@ -537,14 +549,18 @@ fn main() {
     // }
 
     // async await
-    async fn async_add(left: i32, right: i32) -> i32 {
-        left + right
-    }
+    // async fn async_add(left: i32, right: i32) -> i32 {
+    //     left + right
+    // }
 
-    async fn something_greate_async_funtion() -> i32 {
-        let ans = async_add(2, 3).await;
-        println!("{}", ans);
-        ans
-    }
-    executor::block_on(something_greate_async_funtion());
+    // async fn something_greate_async_funtion() -> i32 {
+    //     let ans = async_add(2, 3).await;
+    //     println!("{}", ans);
+    //     ans
+    // }
+    // executor::block_on(something_greate_async_funtion());
+
+    // module
+    module_a::calc();
+    module_b::calc();
 }
