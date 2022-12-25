@@ -1,3 +1,6 @@
+mod module_a;
+mod module_b;
+
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
