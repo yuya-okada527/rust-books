@@ -592,3 +592,9 @@ fn assert_sample() {
     assert_eq!(true, true);
     assert_ne!(true, false);
 }
+
+#[test]
+#[should_panic]
+fn test_panic() {
+    panic!("expected panic");
+}
