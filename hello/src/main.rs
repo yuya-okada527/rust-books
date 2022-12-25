@@ -10,6 +10,7 @@
 // use std::pin::Pin;
 // use std::task::{Context, Poll};
 // use futures::executor;
+use std::sync::Arc;
 
 // mod module_a {
 //     pub fn calc() {
@@ -563,4 +564,10 @@ fn main() {
     // module
     // module_a::calc();
     // module_b::calc();
+
+    // cargo fix
+    let mut s = "Hello, World!";
+    println!("{}", s);
+    let string = &s;
+    println!("{}", s);
 }
