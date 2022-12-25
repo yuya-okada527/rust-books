@@ -572,6 +572,13 @@ fn main() {
     // println!("{}", s);
 }
 
+/// This function adds 2 numbers.
+///
+/// # Example
+///
+/// ```
+/// add(1, 2);
+/// ```
 pub fn add(x: i32, y: i32) -> i32 {
     return x + y;
 }
@@ -597,4 +604,10 @@ fn assert_sample() {
 #[should_panic]
 fn test_panic() {
     panic!("expected panic");
+}
+
+#[test]
+#[ignore]
+fn test_add_ignored() {
+    assert_eq!(-2, add(-1, -1));
 }
