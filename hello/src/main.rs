@@ -11,17 +11,17 @@
 // use std::task::{Context, Poll};
 // use futures::executor;
 
-mod module_a {
-    pub fn calc() {
-        println!("module a!");
-    }
-}
+// mod module_a {
+//     pub fn calc() {
+//         println!("module a!");
+//     }
+// }
 
-mod module_b {
-    pub fn calc() {
-        println!("module b!");
-    }
-}
+// mod module_b {
+//     pub fn calc() {
+//         println!("module b!");
+//     }
+// }
 
 fn main() {
     // 文字列
@@ -561,6 +561,6 @@ fn main() {
     // executor::block_on(something_greate_async_funtion());
 
     // module
-    module_a::calc();
-    module_b::calc();
+    // module_a::calc();
+    // module_b::calc();
 }
