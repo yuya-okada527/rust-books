@@ -20,6 +20,14 @@ use clap::{App, Arg};
 
 fn main() {
 
+    // derive
+    // let opts = Opts::parse();
+    // match opts.formula_file {
+    //     Some(file) => println!("File specified: {}", file),
+    //     None => println!("No file specified."),
+    // }
+    // println!("Is Verbosity specified?: {}", opts.verbose);
+
     // program
     let matches = App::new("My RPN program")
         .version("1.0.0")
@@ -47,12 +55,4 @@ fn main() {
     }
     let verbose = matches.is_present("verbose");
     println!("Is verbosity specified?: {}", verbose);
-
-    // derive
-    // let opts = Opts::parse();
-    // match opts.formula_file {
-    //     Some(file) => println!("File specified: {}", file),
-    //     None => println!("No file specified."),
-    // }
-    // println!("Is Verbosity specified?: {}", opts.verbose);
 }
