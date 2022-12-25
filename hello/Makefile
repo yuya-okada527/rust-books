@@ -1,5 +1,7 @@
 run:
 	cargo run
+test:
+	cargo test
 fix:
 	cargo fix
 docs:
