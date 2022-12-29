@@ -1,5 +1,5 @@
 run:
-	cargo run
+	cargo run -- input.txt -v
 test:
 	cargo test
 ca:
