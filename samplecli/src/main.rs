@@ -90,3 +90,14 @@ fn run<R: BufRead>(reader: R, verbose: bool) {
         println!("{}", answer);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ok() {
+        let calc = RpnCalculator::new(false);
+        assert_eq!(calc.eval("5"), 5);
+    }
+}
