@@ -1,5 +1,5 @@
 run:
-	cargo run -- input.txt -v
+	cargo run --bin samplecli input.txt -v
 err:
 	cargo run --bin err_panic
 err_num:
