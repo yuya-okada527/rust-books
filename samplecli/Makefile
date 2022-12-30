@@ -6,6 +6,12 @@ err_num:
 	echo hoge > number.txt
 	cargo run --bin err_panic
 	rm number.txt
+anyhow:
+	cargo run --bin err_anyhow
+anyhow_num:
+	echo hoge > number.txt
+	cargo run --bin err_anyhow
+	rm number.txt
 test:
 	cargo test
 ca:
