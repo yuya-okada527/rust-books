@@ -1,5 +1,7 @@
 run:
 	cargo run -- input.txt -v
+err:
+	cargo run --bin err_panic
 test:
 	cargo test
 ca:
