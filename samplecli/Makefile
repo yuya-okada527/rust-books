@@ -12,6 +12,10 @@ anyhow_num:
 	echo hoge > number.txt
 	cargo run --bin err_anyhow
 	rm number.txt
+anyhow_success:
+	echo 32 > number.txt
+	cargo run --bin err_anyhow
+	rm number.txt
 test:
 	cargo test
 ca:
