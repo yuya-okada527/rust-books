@@ -1,14 +1,24 @@
-use actix_web::{get, web, App, HttpResponse, HttpServer, ResponseError};
+use actix_web::{web, http::header, get, post, App, HttpResponse, HttpServer, ResponseError};
 use thiserror::Error;
 use askama::Template;
-
 use r2d2::Pool;
 use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::params;
+use serde::Deserialize;
 
 struct TodoEntry {
     id: u32,
     text: String,
+}
+
+#[derive(Deserialize)]
+struct AddParams {
+    text: String,
+}
+
+#[derive(Deserialize)]
+struct DeleteParams {
+    id: u32,
 }
 
 #[derive(Template)]
@@ -54,6 +64,32 @@ async fn index(db: web::Data<Pool<SqliteConnectionManager>>) -> Result<HttpRespo
     )
 }
 
+#[post("/add")]
+async fn add_todo(
+    params: web::Form<AddParams>,
+    db: web::Data<r2d2::Pool<SqliteConnectionManager>>,
+) -> Result<HttpResponse, MyError> {
+    let conn = db.get()?;
+    conn.execute("INSERT INTO todo (text) VALUES (?)", &[&params.text])?;
+    Ok(HttpResponse::SeeOther()
+        .append_header((header::LOCATION, "/"))
+        .finish()
+    )
+}
+
+#[post("/delete")]
+async fn delete_todo(
+    params: web::Form<DeleteParams>,
+    db: web::Data<r2d2::Pool<SqliteConnectionManager>>,
+) -> Result<HttpResponse, MyError> {
+    let conn = db.get()?;
+    conn.execute("DELETE FROM todo WHERE id=?", &[&params.id])?;
+    Ok(HttpResponse::SeeOther()
+        .append_header((header::LOCATION, "/"))
+        .finish()
+    )
+}
+
 #[actix_rt::main]
 async fn main() -> Result<(), actix_web::Error> {
     let manager = SqliteConnectionManager::file("todo.db");
@@ -70,9 +106,15 @@ async fn main() -> Result<(), actix_web::Error> {
         ",
         params![],
     ).expect("Failed to create a table `todo`.");
-    HttpServer::new(move || App::new().service(index))
-        .bind("0.0.0.0:8080")?
-        .run()
-        .await?;
+    HttpServer::new(move || {
+        App::new()
+            .service(index)
+            .service(add_todo)
+            .service(delete_todo)
+            .app_data(web::Data::new(pool.clone()))
+    })
+    .bind("0.0.0.0:8080")?
+    .run()
+    .await?;
     Ok(())
 }
