@@ -40,3 +40,13 @@ pub fn generate_mandelbrot_set(
   }
   data
 }
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+  #[test]
+  fn test_get_n_diverged() {
+    let max_iter = 10;
+    assert_eq!(get_n_diverged(1.0, 0.0, max_iter), 3);
+  }
+}
