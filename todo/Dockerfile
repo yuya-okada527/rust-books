@@ -17,7 +17,7 @@ RUN cargo build --release
 
 RUN cargo install --path .
 
-FROM  debian:11.6
+FROM debian:11.6
 
 COPY --from=builder /todo/target/release/todo /usr/local/bin/todo
 
