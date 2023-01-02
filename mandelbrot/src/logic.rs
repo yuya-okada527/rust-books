@@ -1,6 +1,6 @@
 fn get_n_diverged(x0: f64, y0: f64, max_iter: usize) -> u8 {
   // 複素数z_nの実部をxn,虚部をynとします
-  let mut xn = 0.0
+  let mut xn = 0.0;
   let mut yn = 0.0;
   for i in 1..max_iter {
     let x_next = xn * xn - yn * yn + x0;

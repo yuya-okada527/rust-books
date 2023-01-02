@@ -1,3 +1,6 @@
+run:
+	wasm-pack build
+	cd www && npm run start
 test:
 	cargo test
 ca:
